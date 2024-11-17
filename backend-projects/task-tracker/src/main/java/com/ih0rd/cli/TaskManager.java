@@ -18,33 +18,6 @@ public class TaskManager {
 
     private static final TaskFactory taskFactory = new TaskFactory();
 
-    public static void run() {
-        System.out.println("Welcome to the task manager!\nPlease, enter a command:");
-        try (Scanner scanner = new Scanner(System.in)) {
-            var inputString = scanner.next().trim();
-            var command = Commands.valueOf(inputString.toUpperCase());
-
-            while (!command.equals(EXIT)) {
-                switch (command) {
-                    case ADD -> {
-//                        var optionalDescription = handleDescriptionValue(scanner);
-//                        optionalDescription.ifPresent(description -> {
-//                            var taskId = taskFactory.create(description);
-//                            System.out.printf("Output: Task added successfully (ID: %s)%n", taskId);
-//                        });
-                    }
-                    case LIST -> {
-                        System.out.println("TODO");
-                    }
-                    default -> System.out.println("Unknown command. Please try again.");
-                }
-
-            }
-
-            System.out.println("Exiting the program...");
-        }
-    }
-
     public static void run(String... args) {
         System.out.println("Welcome to the task manager!\nPlease, enter a command:");
         var command = Commands.fromString(args[0].toUpperCase());
@@ -86,21 +59,4 @@ public class TaskManager {
         }
 
     }
-
-
-    private static void handleArguments(String[] args) {
-        var command = Commands.valueOf(args[0].toUpperCase());
-        var arg1 = args[1].toLowerCase();
-        var arg2 = args[2].toLowerCase();
-
-    }
-
-    private static Optional<Long> handleLongValue(String inputString) {
-        try {
-            return Optional.of(Long.parseLong(inputString));
-        } catch (NumberFormatException e) {
-            return Optional.empty();
-        }
-    }
 }
-
