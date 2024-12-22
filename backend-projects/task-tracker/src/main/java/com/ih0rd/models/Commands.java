@@ -23,7 +23,6 @@ public enum Commands {
     }
 
     public static Commands fromString(String command) {
-        System.out.println("input command: " + command);
         for (Commands cmd : Commands.values()) {
             if (cmd.name().equals(command) || cmd.getCommand().equalsIgnoreCase(command)) {
                 return cmd;

@@ -20,8 +20,8 @@ public class TaskPrinter {
                     task.getId(),
                     task.getDescription(),
                     task.getStatus(),
-                    task.getCreatedAt(),
-                    task.getUpdatedAt());
+                    task.getCreatedAt().toString(),
+                    task.getUpdatedAt().toString());
         }
         System.out.println(separator);
     }

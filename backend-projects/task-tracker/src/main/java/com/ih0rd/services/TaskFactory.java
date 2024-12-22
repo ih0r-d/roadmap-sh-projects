@@ -34,8 +34,6 @@ public class TaskFactory {
 
     public long create(String description) {
         var createdTask = new Task(idCounter.getAndIncrement(), description, TaskStatus.TODO, LocalDateTime.now(), null);
-        System.out.println("createdTask = " + createdTask);
-        System.out.println(tasks);
         tasks.add(createdTask);
         filesFactory.writeToFile(tasks);
         return createdTask.getId();

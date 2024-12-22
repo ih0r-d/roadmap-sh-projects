@@ -3,6 +3,7 @@ package com.ih0rd.models;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 import static com.ih0rd.utils.TaskValidator.validateColumnsValues;
 
@@ -12,6 +13,9 @@ public class Task implements Comparable<Task> {
     private TaskStatus status;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+
+    public Task() {
+    }
 
     public Task (Long id, String description, TaskStatus status, LocalDateTime createdAt, LocalDateTime updatedAt) {
         validateColumnsValues(id, description, createdAt, updatedAt);
@@ -68,9 +72,21 @@ public class Task implements Comparable<Task> {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Task task = (Task) o;
+        return Objects.equals(id, task.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+    @Override
     public String toString() {
         return String.format("| %-5d | %-30s | %-15s | %-20s | %-20s |",
-                id, description, status, createdAt, updatedAt);
+                id, description, status, createdAt.toString(), updatedAt.toString());
     }
 
 }

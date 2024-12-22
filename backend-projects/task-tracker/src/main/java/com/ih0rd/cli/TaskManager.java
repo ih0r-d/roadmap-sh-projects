@@ -19,17 +19,14 @@ public class TaskManager {
     private static final TaskFactory taskFactory = new TaskFactory();
 
     public static void run(String... args) {
-        System.out.println("Welcome to the task manager!\nPlease, enter a command:");
         var command = Commands.fromString(args[0].toUpperCase());
         var arg1 = args[1].toLowerCase();
         var arg2 = args[2].toLowerCase();
 
-        while (!command.equals(EXIT)) {
             switch (command) {
                 case ADD -> {
                     var taskId = taskFactory.create(arg1);
                     System.out.printf("Task added successfully (ID: %s)%n", taskId);
-                    break;
                 }
                 case LIST -> taskFactory.printTasks(null);
                 case LIST_DONE -> taskFactory.printTasks(TaskStatus.DONE);
@@ -54,8 +51,8 @@ public class TaskManager {
                 case HELP -> {
                     System.out.println("Supported commands:" + Arrays.toString(Commands.values()));
                 }
+                case EXIT -> System.out.println("Exit from task manager..");
                 default -> System.out.println("Unknown command. Please try again.");
-            }
         }
 
     }

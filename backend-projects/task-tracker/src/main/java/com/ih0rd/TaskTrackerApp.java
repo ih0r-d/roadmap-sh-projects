@@ -32,11 +32,6 @@ public class TaskTrackerApp {
     task-cli list in-progress
 
 * */
-        var vars = "add \"Buy groceries\"";
-
-
-//        TaskManager.run(vars.split(" "));
-        System.out.println("args: " + Arrays.toString(args));
         TaskManager.run(args);
     }
 }
